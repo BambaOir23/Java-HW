@@ -1,20 +1,25 @@
 public class Main {
-
     public static void main(String[] args) {
-        AnimalFactory factory = new AnimalFactory();
+        Person host = new Person();
 
-        Cat cat = factory.newCat(200);
-        Dog dog = factory.newDog(500, 10);
+        Cat[] cats = {
+                new Cat(3, "Рыжий", host),
+                new Cat(6, "Оболтус", host),
+                new Cat(9, "Петр Петрович", host)
+        };
 
-        cat.runOn(125);
-        cat.swimOn(1);
+        Plate plate = new Plate(0);
 
-        dog.runOn(520);
-        dog.swimOn(9);
+        plate.showInfo();
 
+        for (Cat cat : cats) {
+            cat.eat(plate);
+            plate.showInfo();
+        }
 
-        System.out.println("Животных создано всего: " + factory.getAnimalsCount());
-        System.out.println("Собак создано всего: " + factory.getDogsCount());
-        System.out.println("Кошек создано всего: " + factory.getCatsCount());
+        for (Cat cat : cats) {
+            cat.eat(plate);
+            plate.showInfo();
+        }
     }
 }
